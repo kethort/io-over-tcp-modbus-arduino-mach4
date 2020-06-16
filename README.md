@@ -6,6 +6,10 @@ This sketch allows control of 32 inputs and 32 outputs using the Mach4 modbus pl
 
 The sketch accesses the Arduino pins directly using port manipulation for faster signaling. 
 
+The TestModbus.m4prof file is a Mach4 profile which includes the configuration and signal map for using the IO with the Modbus plugin.
+
+
+
 ### Output Pins
 {2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 
  14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 

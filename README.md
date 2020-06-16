@@ -8,7 +8,9 @@ The sketch accesses the Arduino pins directly using port manipulation for faster
 
 The TestModbus.m4prof file is a Mach4 profile which includes the configuration and signal map for using the IO with the Modbus plugin.
 
-
+<p align="center">
+  <img src="/img/Mach4Modbus.PNG" width="500"/>
+</p>
 
 ### Output Pins
 {2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 

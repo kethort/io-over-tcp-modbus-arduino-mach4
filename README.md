@@ -1,4 +1,4 @@
-# Arduino Mega W5500 Mach4 Modbus Over TCP
+# Arduino Mega W5500 Mach4 Modbus via TCP
 
 This sketch requires the use of a W5100 or W5500 ethernet adapter.
 

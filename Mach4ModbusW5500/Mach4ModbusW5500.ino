@@ -6,9 +6,6 @@
 -----------------------------------------------------------------------------
  */
 
-#include <ModbusIP.h>
-ModbusIP mb;
-
 // LSB      P0  P1  P2  P3  P4  P5, P6, P7    MSB
 //-------------------------------------------------------------
 // OUTPUTS
@@ -16,8 +13,8 @@ ModbusIP mb;
 // PORTA = {22, 23, 24, 25, 26, 27, 28, 29};       
 
 // PORTG = {41, 40, 39, xx, xx, 4, xx, xx};
-// PORTB = {xx, xx, xx, xx, 10, 11, 12, 13};
-
+// PORTB = {xx, xx, xx, xx, 10, 11, 12, 13}; // w5500 ethernet module uses 53, 52, 51, and 50 
+                                             // so need to skip those pins
 // PORTD = {21, 20, 19, 18, xx, xx, xx, 38};
 // PORTE = {xx, xx, xx, 5,  2,  3,  xx, xx};
 
@@ -33,12 +30,14 @@ ModbusIP mb;
 // PORTL = {49, 48, 47, 46, 45, 44, 43, 42};      
 //-------------------------------------------------------------
 
+#include <ModbusIP.h>
+ModbusIP mb;
+
 byte pos = 0;
 
 /*
-    For some reason Mach4, or maybe the modbusIP library, does not
-    like addresses that are a factor of 8. That's why they are skipped
-    both in the sketch and in the Mach4 modbus plugin configuration.
+    The modbus TCP protocol does not seem to work with register addresses that are a factor of 8. 
+    That's why they are skipped in the sketch and in the Mach4 modbus plugin configuration.
 */
 byte modbusRegs[] = {1,  2,  3,  4,  5,  6,  7,  9,   // 0 - 7    PORTF
                      10, 11, 12, 13, 14, 15, 17, 18,  // 8 - 15   PORTK
@@ -103,7 +102,7 @@ void loop() {
 /*
     The readInputs function reads the pin value from the PORT bit-map.
 
-    The pos acts like a pointer to the pin in the PORT. It also points to the
+    The pos variable acts like a pointer to the pin in the PORT. It also points to the
     modbus register number in the modbusRegs array and is used to switch to the next 
     port after each full read of the port occurs. 
 */
@@ -113,7 +112,7 @@ void readInputs() {
   
   switch(switchState) {
     case 0:
-      invertedState = ((PINF >> pos % 8) & 0x01) ? 0 : 1; // inputs are set as NPN so read the NOT of the bit
+      invertedState = ((PINF >> pos % 8) & 0x01) ? 0 : 1; // inputs are active low so get the NOT state
       mb.Coil(modbusRegs[pos], invertedState); // put the input state into the coil register
       break;
     case 1:
@@ -135,14 +134,20 @@ void readInputs() {
     The processOutputs function requires much more positional manipulation due to 
     the scattered orientation of the pins across the rest of the unused ports. 
 
-    Separating the input and output ports was intentional, as it was the easiest way to 
-    'split' the Arduino in half with most inputs on one side, and the outputs on the other side.
+    As a result, the bit manipulation is basically hard coded using various if statements, so changing
+    any of the output pins might be a difficult task and isn't recommended. 
+    
+    The advantage to the port manipulation is much faster write access vs the Arduino digitalWrite function.
+    
+    Separating the input and output ports in this way was intentional, as it was the easiest way to 
+    'split' the Arduino in half with inputs on one side of the PCB, and the outputs on the other side.
 */
 void processOutputs() {
   byte switchState = pos / 8; // switch to a new port every 8 bits
-   
+
   switch(switchState) {
     case 4:
+      // reads the coil state in the modbus buffer and writes the value of that bit to the port 
       PORTA = mb.Coil(modbusRegs[pos]) ? PORTA | (1 << (pos % 8)) : PORTA & ~(1 << (pos % 8));
       break;
     case 5:

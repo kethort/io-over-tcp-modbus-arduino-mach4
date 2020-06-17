@@ -2,14 +2,20 @@
 
 This sketch requires the use of a W5100 or W5500 ethernet adapter.
 
-This sketch allows control of 32 inputs and 32 outputs using the Mach4 modbus plugin. 
+Allows control of 32 inputs and 32 outputs using the Mach4 modbus plugin. 
 
-The sketch accesses the Arduino pins directly using port manipulation for faster signaling. 
+Accesses the Arduino pins directly using port manipulation for faster signaling. 
 
 The TestModbus.m4prof file is a Mach4 profile which includes the configuration and signal map for using the IO with the Modbus plugin.
 
 <p align="center">
   <img src="/img/Mach4Modbus.PNG" width="500"/>
+</p>
+
+Pin 53 is used as the SS or CS pin so that pin 10 can be used as an output pin. If you are using the W5100 ethernet shield then pin 10 should be bent or cut off and connect a wire from pin 10 on the shield to pin 53 of the Arduino Mega.
+
+<p align="center">
+  <img src="/img/bodge.jpg" width="500"/>
 </p>
 
 ### Output Pins

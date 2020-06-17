@@ -12,7 +12,7 @@ The TestModbus.m4prof file is a Mach4 profile which includes the configuration a
   <img src="/img/Mach4Modbus.PNG" width="500"/>
 </p>
 
-Pin 53 is used as the SS or CS pin so that pin 10 can be used as an output. If you are using the W5100 ethernet shield then pin 10 should be bent or cut off and connect a wire from pin 10 on the shield to pin 53 of the Arduino Mega.
+Pin 53 is used as the SS or CS pin so that pin 10 can be used as an output. If you are using the W5100 ethernet shield, then pin 10 should be bent or cut off and connect a wire from pin 10 on the shield to pin 53 of the Arduino Mega.
 
 <p align="center">
   <img src="/img/bodge.jpg" width="500"/>

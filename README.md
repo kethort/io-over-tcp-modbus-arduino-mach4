@@ -2,9 +2,9 @@
 
 This sketch requires the use of a W5100 or W5500 ethernet adapter.
 
-Allows control of 32 inputs and 32 outputs using the Mach4 modbus plugin. 
+The program allows control of 32 inputs and 32 outputs using the Mach4 modbus plugin. 
 
-Accesses the Arduino pins directly using port manipulation for faster signaling. 
+The sketch accesses the Arduino pins directly using port manipulation for faster signaling. 
 
 The TestModbus.m4prof file is a Mach4 profile which includes the configuration and signal map for using the IO with the Modbus plugin.
 

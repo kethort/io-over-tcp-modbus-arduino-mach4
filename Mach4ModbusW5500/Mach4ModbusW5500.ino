@@ -29,6 +29,10 @@
 // PORTC = {37, 36, 35, 34, 33, 32, 31, 30};       
 // PORTL = {49, 48, 47, 46, 45, 44, 43, 42};      
 //-------------------------------------------------------------
+#include <Wire.h>
+#include <Adafruit_ADS1015.h>
+
+Adafruit_ADS1115 ads(0x48);
 
 #include <ModbusIP.h>
 ModbusIP mb;
@@ -47,11 +51,15 @@ byte modbusRegs[] = {1,  2,  3,  4,  5,  6,  7,  9,   // 0 - 7    PORTF
                      37, 38, 39, 41, 42, 43, 44, 45,  // 32 - 39  PORTA
                      46, 47, 49, 50, 51, 52, 53, 54,  // 40 - 47  PORTB & PORTG
                      55, 57, 58, 59, 60, 61, 62, 63,  // 48 - 55  PORTD & PORTE
-                     65, 66, 67, 68, 69, 70, 71, 73}; // 56 - 63  PORTH & PORTJ
+                     65, 66, 67, 68, 69, 70, 71, 73,  // 56 - 63  PORTH & PORTJ
+                     74, 75, 76, 77, 78, 79, 81, 82}; // 64 - 71  ADC (4 channels i2c bus)
                
 byte numRegs = sizeof(modbusRegs)/sizeof(modbusRegs[0]);
 
 void setup() {
+  ads.setGain(GAIN_TWOTHIRDS);  // 2/3x gain +/- 6.144V  1 bit = 3mV      0.1875mV (default)
+  ads.begin();
+  
   byte mac[] = {0xDE, 0xAD, 0xBE, 0xEF, 0xFE, 0xED};  
   byte ip[] = {192, 168, 1, 222}; 
   
@@ -84,7 +92,11 @@ void setup() {
   mb.config(mac, ip);
   
   for(int i = 0; i < numRegs; i++) {
-    mb.addCoil(modbusRegs[i]); 
+    if (i >= 64 && i <= 67) {
+      mb.addIreg(modbusRegs[i]);
+    } else {
+      mb.addCoil(modbusRegs[i]);
+    }
   }
 }
 
@@ -95,6 +107,7 @@ void loop() {
 
   readInputs();
   processOutputs();
+  readADC();
    
   pos++;
 }
@@ -186,4 +199,32 @@ void processOutputs() {
       }
       break;
   } 
+}
+
+void readADC() {
+  byte switchState = pos / 8; 
+  int16_t adc; // largest value for modbus reg is WORD
+  
+  switch(switchState) {
+    case 8:
+      switch(pos) {
+        case 64:
+          adc = ads.readADC_SingleEnded(0) + 160;
+          mb.Ireg(modbusRegs[pos], adc);
+          break;
+        case 65:
+          adc = ads.readADC_SingleEnded(1) + 160;
+          mb.Ireg(modbusRegs[pos], adc);
+          break;
+        case 66:
+          adc = ads.readADC_SingleEnded(2) + 160;
+          mb.Ireg(modbusRegs[pos], adc);
+          break;
+        case 67:
+          adc = ads.readADC_SingleEnded(3) + 160;
+          mb.Ireg(modbusRegs[pos], adc);
+          break;  
+      } 
+      break;
+  }
 }

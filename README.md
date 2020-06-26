@@ -6,7 +6,7 @@ The program allows control of 32 inputs and 32 outputs using the Mach4 modbus pl
 
 The sketch accesses the Arduino pins directly using port manipulation for faster signaling. 
 
-The TestModbus.m4prof file is a Mach4 profile which includes the configuration and signal map for using the IO with the Modbus plugin.
+There are 3 different versions of the Mach4 profile. To use just the digital inputs and outputs use IO_Modbus.m4prof. Otherwise, use either IO_With_ADC.m4prof, IO_With_DAC.m4prof or IO_With_ADC_DAC.m4prof. 
 
 <p align="center">
   <img src="/img/Mach4Modbus.PNG" width="750"/>
@@ -18,7 +18,13 @@ Pin 53 is used as the SS or CS pin so that pin 10 can be used as an output. If y
   <img src="/img/bodge.jpg" width="750"/>
 </p>
 
-The following image shows the time difference of using a for loop in the Arduino loop() function versus just using the loop() function and incrementing a global position variable to read/write modbus registers.
+The IP address in the sketch and the Mach4 modbus plugin configuration must be setup according to the network configuration of the connected device. The modbus plugin configuration can be accessed through the Mach4 file menu at: Configure>Plugins...>Modbus. 
+
+<p align="center">
+  <img src="/img/Mach4ModbusIPConfig.PNG" width="750"/>
+</p>
+
+The following image shows the response time difference of using a for loop in the Arduino loop() function versus just using the loop() function and incrementing a global position variable to read/write modbus registers.
 
 <p align="center">
   <img src="/img/loopTimeDifference.PNG" width="750"/>

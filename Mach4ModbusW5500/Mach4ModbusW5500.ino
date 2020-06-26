@@ -1,6 +1,6 @@
 /*
 -----------------------------------------------------------------------------
--- Name:        Mach4 Modbus with W5500
+-- Name:        Mach4 Modbus with W5500, ADS1115 & MCP4725
 -- Author:      Kenneth Orton
 -- Created:     06/15/2020
 -----------------------------------------------------------------------------
@@ -29,13 +29,34 @@
 // PORTC = {37, 36, 35, 34, 33, 32, 31, 30};       
 // PORTL = {49, 48, 47, 46, 45, 44, 43, 42};      
 //-------------------------------------------------------------
+
+// Uncomment one or both of these if using the Adafruit ADC or DAC devices
+//#define USE_ADC
+//#define USE_DAC
+
+#ifdef USE_ADC || USE_DAC
 #include <Wire.h>
+#endif
+
+#ifdef USE_ADC
 #include <Adafruit_ADS1015.h>
 
-Adafruit_ADS1115 ads(0x48);
+#define ADC_ADDR 0x48
+Adafruit_ADS1115 ads(ADC_ADDR);
+#endif
+
+#ifdef USE_DAC
+#include <Adafruit_MCP4725.h>
+
+#define DAC_ADDR 0x62
+Adafruit_MCP4725 dac;
+#endif
 
 #include <ModbusIP.h>
 ModbusIP mb;
+
+byte mac[] = {0xDE, 0xAD, 0xBE, 0xEF, 0xFE, 0xED};  
+byte ip[] = {192, 168, 1, 222}; 
 
 byte pos = 0;
 
@@ -52,17 +73,24 @@ byte modbusRegs[] = {1,  2,  3,  4,  5,  6,  7,  9,   // 0 - 7    PORTF
                      46, 47, 49, 50, 51, 52, 53, 54,  // 40 - 47  PORTB & PORTG
                      55, 57, 58, 59, 60, 61, 62, 63,  // 48 - 55  PORTD & PORTE
                      65, 66, 67, 68, 69, 70, 71, 73,  // 56 - 63  PORTH & PORTJ
-                     74, 75, 76, 77, 78, 79, 81, 82}; // 64 - 71  ADC (4 channels i2c bus)
+                     74, 75, 76, 77, 78};             // 64 - 68  ADC (4 channels i2c bus)
                
 byte numRegs = sizeof(modbusRegs)/sizeof(modbusRegs[0]);
 
 void setup() {
-  ads.setGain(GAIN_TWOTHIRDS);  // 2/3x gain +/- 6.144V  1 bit = 3mV      0.1875mV (default)
+#ifndef USE_ADC || USE_DAC
+  numRegs -= 5;
+#endif
+  
+#ifdef USE_ADC
+  ads.setGain(GAIN_TWOTHIRDS);  // 2/3x gain +/- 6.144V  1 bit = 3mV  0.1875mV (default)
   ads.begin();
-  
-  byte mac[] = {0xDE, 0xAD, 0xBE, 0xEF, 0xFE, 0xED};  
-  byte ip[] = {192, 168, 1, 222}; 
-  
+#endif
+
+#ifdef USE_DAC
+  dac.begin(DAC_ADDR);
+#endif
+ 
   // define inputs as pullups
   DDRF = DDRK = DDRC = DDRL = 0;
   PORTF = PORTK = PORTC = PORTL = 0xFF;
@@ -91,11 +119,13 @@ void setup() {
    
   mb.config(mac, ip);
   
-  for(int i = 0; i < numRegs; i++) {
-    if (i >= 64 && i <= 67) {
-      mb.addIreg(modbusRegs[i]);
+  for(byte i = 0; i < numRegs; i++) {
+    if (i >= 64 && i <= 67) {     // ADC registers 
+      mb.addIreg(modbusRegs[i]);   
+    } else if (i == 68) {         // DAC register
+      mb.addHreg(modbusRegs[i]);
     } else {
-      mb.addCoil(modbusRegs[i]);
+      mb.addCoil(modbusRegs[i]); // input and output registers
     }
   }
 }
@@ -107,8 +137,11 @@ void loop() {
 
   readInputs();
   processOutputs();
-  readADC();
-   
+
+#ifdef USE_ADC || USE_DAC
+  readADCwriteDAC();
+#endif
+
   pos++;
 }
 
@@ -125,7 +158,7 @@ void readInputs() {
   
   switch(switchState) {
     case 0:
-      invertedState = ((PINF >> pos % 8) & 0x01) ? 0 : 1; // inputs are active low so get the NOT state
+      invertedState = ((PINF >> pos % 8) & 0x01) ? 0 : 1; // inputs are active low; this gets the inverted state of the pin
       mb.Coil(modbusRegs[pos], invertedState); // put the input state into the coil register
       break;
     case 1:
@@ -153,7 +186,7 @@ void readInputs() {
     The advantage to the port manipulation is much faster write access vs the Arduino digitalWrite function.
     
     Separating the input and output ports in this way was intentional, as it was the easiest way to 
-    'split' the Arduino in half with inputs on one side of the PCB, and the outputs on the other side.
+    'split' the Arduino Mega in half with inputs on one side of the PCB, and the outputs on the other side.
 */
 void processOutputs() {
   byte switchState = pos / 8; // switch to a new port every 8 bits
@@ -201,30 +234,29 @@ void processOutputs() {
   } 
 }
 
-void readADC() {
+#ifdef USE_ADC || USE_DAC
+void readADCwriteDAC() {
   byte switchState = pos / 8; 
-  int16_t adc; // largest value for modbus reg is WORD
+  word adc; // largest value for modbus reg is 16-bits
+  word dacVal; 
   
   switch(switchState) {
     case 8:
       switch(pos) {
+        case 68:
+          dacVal = mb.Hreg(modbusRegs[pos]);
+          mb.Hreg(modbusRegs[pos], dacVal);
+          dac.setVoltage(dacVal, false);
+          break;
         case 64:
-          adc = ads.readADC_SingleEnded(0) + 160;
-          mb.Ireg(modbusRegs[pos], adc);
-          break;
         case 65:
-          adc = ads.readADC_SingleEnded(1) + 160;
-          mb.Ireg(modbusRegs[pos], adc);
-          break;
         case 66:
-          adc = ads.readADC_SingleEnded(2) + 160;
-          mb.Ireg(modbusRegs[pos], adc);
-          break;
         case 67:
-          adc = ads.readADC_SingleEnded(3) + 160;
+          byte adcChannel = pos % 8;
+          adc = ads.readADC_SingleEnded(adcChannel) + 75;
           mb.Ireg(modbusRegs[pos], adc);
-          break;  
+          break; 
       } 
-      break;
   }
 }
+#endif

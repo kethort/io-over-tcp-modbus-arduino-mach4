@@ -59,6 +59,7 @@ https://github.com/andresarmento/modbus-arduino
 
 ## ADC and DAC libraries
 https://github.com/adafruit/Adafruit_MCP4725
+
 https://github.com/adafruit/Adafruit_BusIO
 
 https://github.com/adafruit/Adafruit_ADS1X15

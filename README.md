@@ -6,7 +6,7 @@ The program allows control of 32 inputs and 32 outputs using the Mach4 modbus pl
 
 The sketch accesses the Arduino pins directly using port manipulation for faster signaling. 
 
-There are 3 different versions of the Mach4 profile. To use just the digital inputs and outputs use IO_Modbus.m4prof. Otherwise, use either IO_With_ADC.m4prof, IO_With_DAC.m4prof or IO_With_ADC_DAC.m4prof. 
+There are 4 different versions of the Mach4 profile. To use just the digital inputs and outputs use IO_Modbus.m4prof. Otherwise, use either IO_With_ADC.m4prof, IO_With_DAC.m4prof or IO_With_ADC_DAC.m4prof. 
 
 <p align="center">
   <img src="/img/Mach4Modbus.PNG" width="750"/>

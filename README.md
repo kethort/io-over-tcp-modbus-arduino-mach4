@@ -52,10 +52,11 @@ The ADC & DAC inputs and outputs communicate over the i2C bus. Use the i2C scann
  A11, A12, A13, A14, A15, 30, 31, 32, 33, 34, 
  35, 36, 37, 42, 43, 44, 45, 46, 47, 48, 49}
 
+## Demonstration
+https://www.youtube.com/watch?v=koNoJPKRC_M
 
 ## Modbus TCP Library Used (the edited version for Arduino Mega is included in the repo)
 https://github.com/andresarmento/modbus-arduino
-
 
 ## ADC and DAC libraries
 https://github.com/adafruit/Adafruit_MCP4725

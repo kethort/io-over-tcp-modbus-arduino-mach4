@@ -90,12 +90,14 @@ void setup() {
 #ifdef USE_DAC
   dac.begin(DAC_ADDR);
 #endif
- 
-  // define inputs as pullups
-  DDRF = DDRK = DDRC = DDRL = 0;
-  PORTF = PORTK = PORTC = PORTL = 0xFF;
+  
+  // DDR is the port data direction; outputs are 1 inputs are 0
 
-  // define outputs and set to low
+  // define inputs 
+  DDRF = DDRK = DDRC = DDRL = 0;
+  PORTF = PORTK = PORTC = PORTL = 0xFF; // initalizes the input pins as HIGH or pullups
+
+  // define outputs
   DDRA = 0xFF; 
   PORTA = 0;
   

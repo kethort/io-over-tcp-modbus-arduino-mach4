@@ -62,6 +62,7 @@ To change these configurations delete the default modbus_ini_settings file in th
 4.  https://www.amazon.com/Adafruit-MCP4725-Breakout-Board-Interface/dp/B00SK8MBXI
 5.  https://www.amazon.com/HiLetgo-Converter-Programmable-Amplifier-Development/dp/B01DLHKMO2/ref=sr_1_1_sspa?crid=1IGPUNOC1A5R2&dchild=1&keywords=ads1115&qid=1609909759&s=electronics&sprefix=ads1%2Celectronics%2C210&sr=1-1-spons&psc=1&spLa=ZW5jcnlwdGVkUXVhbGlmaWVyPUExUUtHNVYzREtSSEdEJmVuY3J5cHRlZElkPUEwOTkwMzI0MUpTMzJTMjYyUTVWUiZlbmNyeXB0ZWRBZElkPUEwNDAyOTIzMTlLVEM3UjJER1RFWiZ3aWRnZXROYW1lPXNwX2F0ZiZhY3Rpb249Y2xpY2tSZWRpcmVjdCZkb05vdExvZ0NsaWNrPXRydWU=
 
+<br>
 ##W5100 Connection
 
 Pin 53 is used as the SS or CS pin so that pin 10 can be used as an output. If you are using the W5100 ethernet shield, then pin 10 should be bent or cut off and wire should be connected from pin 10 on the Ethernet shield to pin 53 of the Arduino Mega.

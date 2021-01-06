@@ -56,7 +56,7 @@ Adafruit_MCP4725 dac;
 ModbusIP mb;
 
 byte mac[] = {0xDE, 0xAD, 0xBE, 0xEF, 0xFE, 0xED};  
-byte ip[] = {192, 168, 2, 222}; 
+byte ip[] = {192, 168, 2, 95}; 
 
 byte pos = 0;
 

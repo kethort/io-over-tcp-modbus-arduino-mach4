@@ -3,7 +3,7 @@
 This sketch requires the use of a W5100 or W5500 ethernet adapter and optionally supports either an Adafruit ADS1115 ADC and MCP4725 DAC device (or both). To use the ADC or DAC uncomment the #defines at the top of the sketch. 
 
 <p align="center">
-  <img src="/img/sharp_defines.PNG" height="200" width="700"/>
+  <img src="/img/sharp_defines.PNG" height="150" width="700"/>
 </p>
 
 The program allows control of 32 inputs and 32 outputs using the Mach4 modbus plugin. 
@@ -30,7 +30,7 @@ https://github.com/adafruit/Adafruit_ADS1X15
 2. Select the Mach4 profile you want to update, enter the IP address of the Arduino and press install (ip address is from the Arduino sketch). 
 
 <p align="center">
-  <img src="/img/ip_address.PNG" height="250" width="300"/>
+  <img src="/img/ip_address.PNG" height="500" width="500"/>
 </p>
 
 4. Open Mach4 and navigate to Diagnostic->Modbus in the File Menu.

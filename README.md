@@ -80,6 +80,9 @@ The IP address in the sketch and the Mach4 modbus plugin configuration must be s
 ### ADC & DAC
 The ADC & DAC inputs and outputs communicate over the i2C bus. Use the i2C scanner at this link: https://gist.github.com/xzenzza/62d35c316191d3a5bae1da68374d4790 to find the address of the devices you are using and change the variables in the sketch accordingly.
 
+<p align="center">
+  <img src="/img/i2c_address.PNG" width="300"/>
+</p>
 
 ### Output Pins
 {2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 

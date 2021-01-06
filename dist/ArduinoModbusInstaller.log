@@ -1,0 +1,8 @@
+Traceback (most recent call last):
+  File "ArduinoModbusInstaller.py", line 282, in btn_install_on_click
+  File "ArduinoModbusInstaller.py", line 228, in enable_plugin_in_ini
+KeyError: 'Plugins'
+Traceback (most recent call last):
+  File "ArduinoModbusInstaller.py", line 282, in btn_install_on_click
+  File "ArduinoModbusInstaller.py", line 228, in enable_plugin_in_ini
+KeyError: 'Plugins'

@@ -3,7 +3,7 @@
 This sketch requires the use of a W5100 or W5500 ethernet adapter and optionally supports either an Adafruit ADS1115 ADC and MCP4725 DAC device (or both). To use the ADC or DAC uncomment the #defines at the top of the sketch. 
 
 <p align="center">
-  <img src="/img/sharp_defines.PNG" height="250" width="500"/>
+  <img src="/img/sharp_defines.PNG" height="200" width="700"/>
 </p>
 
 The program allows control of 32 inputs and 32 outputs using the Mach4 modbus plugin. 

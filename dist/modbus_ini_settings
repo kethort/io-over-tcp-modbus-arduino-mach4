@@ -43,7 +43,6 @@ Func29=function29
 Func30=function30
 Func31=function31
 Func32=function32
-Func33=function33
 [ModbusDevice/Arduino/function0]
 Desc=OUT_1
 Type=2

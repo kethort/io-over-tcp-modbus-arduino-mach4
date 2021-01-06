@@ -106,6 +106,7 @@ https://www.youtube.com/watch?v=koNoJPKRC_M
 ## Modbus TCP Library Used (the edited version for Arduino Mega is included in the repo)
 https://github.com/andresarmento/modbus-arduino
 
+## Miscellaneous Tests
 The following image shows the response time difference of using a for loop in the Arduino loop() function versus just using the loop() function and incrementing a global position variable to read/write modbus registers. Using just the Arduino loop results in much faster response times.
 
 <p align="center">

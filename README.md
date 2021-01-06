@@ -26,6 +26,18 @@ https://github.com/adafruit/Adafruit_ADS1X15
 4. Connect the Arduino to power and the network.
 
 ## Mach4 Software Setup (installer)
+There are several configurations that can be made using the ArduinoModbusInstaller.exe program. 
+a. Use just the inputs and outputs on the Arduino Mega (this is the default).
+b. Use inputs outputs and ADC.
+c. Use inputs outputs and DAC.
+d. Use inputs outputs ADC and DAC.
+
+To change these configurations delete the default modbus_ini_settings file in the src/ini_settings folder and rename the one you want to use as 'modbus_ini_settings'. For example, to use the inputs, outputs, ADC and DAC, delete modbus_ini_settings and rename modbus_ini_settings_io_adc_dac to 'modbus_ini_settings'.
+
+<p align="center">
+  <img src="/img/modbus_settings.PNG" width="300"/>
+</p>
+
 1. Launch the ArduinoModbusInstaller.exe from the dist folder of the repo.
 2. Select the Mach4 profile you want to update, enter the IP address of the Arduino and press install (ip address is from the Arduino sketch). 
 

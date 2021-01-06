@@ -93,11 +93,11 @@ The ADC & DAC inputs and outputs communicate over the i2C bus. Use the i2C scann
  35, 36, 37, 42, 43, 44, 45, 46, 47, 48, 49}
 
 <p align="center">
-  <img src="/img/Pins1.PNG" width="750"/>
+  <img src="/img/Pins1.png" width="750"/>
 </p>
 
 <p align="center">
-  <img src="/img/Pins2.PNG" width="750"/>
+  <img src="/img/Pins2.png" width="750"/>
 </p>
 
 ## Demonstration

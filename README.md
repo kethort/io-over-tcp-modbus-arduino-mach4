@@ -3,7 +3,7 @@
 This sketch requires the use of a W5100 or W5500 ethernet adapter and optionally supports either an Adafruit ADS1115 ADC and MCP4725 DAC device (or both). To use the ADC or DAC uncomment the #defines at the top of the sketch. 
 
 <p align="center">
-  <img src="/img/sharp_defines.PNG" height="150" width="700"/>
+  <img src="/img/sharp_defines.PNG" height="125" width="700"/>
 </p>
 
 The program allows control of 32 inputs and 32 outputs using the Mach4 modbus plugin. 
@@ -35,7 +35,7 @@ d. Use inputs outputs ADC and DAC.
 To change these configurations delete the default modbus_ini_settings file in the src/ini_settings folder and rename the one you want to use as 'modbus_ini_settings'. For example, to use the inputs, outputs, ADC and DAC, delete modbus_ini_settings and rename modbus_ini_settings_io_adc_dac to 'modbus_ini_settings'.
 
 <p align="center">
-  <img src="/img/modbus_settings.PNG" width="300"/>
+  <img src="/img/modbus_settings.PNG" height="500" width="300"/>
 </p>
 
 1. Launch the ArduinoModbusInstaller.exe from the dist folder of the repo.

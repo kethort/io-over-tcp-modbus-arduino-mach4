@@ -30,7 +30,7 @@ https://github.com/adafruit/Adafruit_ADS1X15
 2. Select the Mach4 profile you want to update, enter the IP address of the Arduino and press install (ip address is from the Arduino sketch). 
 
 <p align="center">
-  <img src="/img/ip_address.PNG" height="500" width="500"/>
+  <img src="/img/ip_address.PNG" height="500" width="700"/>
 </p>
 
 4. Open Mach4 and navigate to Diagnostic->Modbus in the File Menu.

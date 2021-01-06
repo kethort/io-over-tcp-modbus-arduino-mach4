@@ -3,16 +3,14 @@
 This sketch requires the use of a W5100 or W5500 ethernet adapter and optionally supports either an Adafruit ADS1115 ADC and MCP4725 DAC device (or both). To use the ADC or DAC uncomment the #defines at the top of the sketch. 
 
 <p align="center">
-  <img src="/img/sharp_defines.PNG" height="150" width="700"/>
+  <img src="/img/sharp_defines.PNG" height="125" width="700"/>
 </p>
 
 The program allows control of 32 inputs and 32 outputs using the Mach4 modbus plugin. 
 
 The sketch accesses the Arduino pins directly using port manipulation for faster signaling. The input pins are active low (NPN -GND) and the output pins are active high (PNP +5v). 
 
-You can either use one of the included profiles or use the ArduinoModbusInstaller.exe from the dist folder of the repo to update an existing Mach4 profile.
-
-There are 4 different versions of the Mach4 profile. To use just the digital inputs and outputs, use IO_Modbus.m4prof. Otherwise, use either IO_With_ADC.m4prof, IO_With_DAC.m4prof or IO_With_ADC_DAC.m4prof. 
+You can either use one of the included profiles in the Mach4 Profiles directory, or use the ArduinoModbusInstaller.exe from the dist folder of the repo to update an existing Mach4 profile.
 
 ## ADC and DAC libraries (if using the ADC and/or DAC modules)
 https://github.com/adafruit/Adafruit_MCP4725 <br>
@@ -21,21 +19,26 @@ https://github.com/adafruit/Adafruit_ADS1X15
 
 ## Firmware and Network Setup
 1. Copy the nested folders in the libraries folder to the Arduino sketch folder on your computer (usually in Documents/Arduino/libraries). 
-2. Change the IP address of the Arduino in the Mach4ModbusW5500.ino sketch to conform to your network.  
+2. Change the IP address of the Arduino in the Mach4ModbusW5500.ino sketch to conform to your network. For example, if your network subnet is 192.168.1.X then change the IP address to something like 192.168.1.85.  
+
+<p align="center">
+  <img src="/img/edit_IP.PNG" width="500"/>
+</p>
+
 3. Upload the Mach4ModbusW5500.ino file to the Arduino Mega using the Arduino (or other) IDE.
 4. Connect the Arduino to power and the network.
 
 ## Mach4 Software Setup (installer)
-There are several configurations that can be made using the ArduinoModbusInstaller.exe program. 
-a. Use just the inputs and outputs on the Arduino Mega (this is the default).
-b. Use inputs outputs and ADC.
-c. Use inputs outputs and DAC.
-d. Use inputs outputs ADC and DAC.
+There are several configurations that can be made using the ArduinoModbusInstaller.exe program. <br>
+a. Use just the inputs and outputs on the Arduino Mega (this is the default). <br>
+b. Use inputs outputs and ADC. <br>
+c. Use inputs outputs and DAC. <br>
+d. Use inputs outputs ADC and DAC. <br>
 
 To change these configurations delete the default modbus_ini_settings file in the src/ini_settings folder and rename the one you want to use as 'modbus_ini_settings'. For example, to use the inputs, outputs, ADC and DAC, delete modbus_ini_settings and rename modbus_ini_settings_io_adc_dac to 'modbus_ini_settings'.
 
 <p align="center">
-  <img src="/img/modbus_settings.PNG" width="300"/>
+  <img src="/img/modbus_settings.PNG" height="400" width="700"/>
 </p>
 
 1. Launch the ArduinoModbusInstaller.exe from the dist folder of the repo.

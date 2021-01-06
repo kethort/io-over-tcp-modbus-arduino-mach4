@@ -10,9 +10,7 @@ The program allows control of 32 inputs and 32 outputs using the Mach4 modbus pl
 
 The sketch accesses the Arduino pins directly using port manipulation for faster signaling. The input pins are active low (NPN -GND) and the output pins are active high (PNP +5v). 
 
-You can either use one of the included profiles or use the ArduinoModbusInstaller.exe from the dist folder of the repo to update an existing Mach4 profile.
-
-There are 4 different versions of the Mach4 profile. To use just the digital inputs and outputs, use IO_Modbus.m4prof. Otherwise, use either IO_With_ADC.m4prof, IO_With_DAC.m4prof or IO_With_ADC_DAC.m4prof. 
+You can either use one of the included profiles in the Mach4 Profiles directory, or use the ArduinoModbusInstaller.exe from the dist folder of the repo to update an existing Mach4 profile.
 
 ## ADC and DAC libraries (if using the ADC and/or DAC modules)
 https://github.com/adafruit/Adafruit_MCP4725 <br>

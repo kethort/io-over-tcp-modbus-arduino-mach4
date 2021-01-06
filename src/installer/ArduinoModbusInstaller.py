@@ -281,7 +281,6 @@ class AppWindow(wx.Frame):
 		ini_dict = self.machine_ini_to_dict(ini_path)
 		 
 		#  enable modbus and regfile plugins
-		#self.enable_plugin_in_ini(ini_dict, 'mcRegfile')
 		self.enable_plugin_in_ini(ini_dict, 'mcModbus')
 
 		# create modbus device
@@ -291,8 +290,6 @@ class AppWindow(wx.Frame):
 		modbus_ini_dict = self.machine_ini_to_dict('modbus_ini_settings')
 		ini_dict.update(modbus_ini_dict)
 
-		#self.create_global_registers(ini_dict)
-
 		# validate IP address and add to ini_dict
 		ip_addr = self.ip_address_entry.GetValue().strip()
 
@@ -301,54 +298,6 @@ class AppWindow(wx.Frame):
 			return
 
 		ini_dict['ModbusDevice/Arduino']['IPAddr'] = ip_addr
-
-		# disable MPG 11 in Machine.ini
-		#ini_dict['Mpg11']['Enabled'] = 0
-
-		# edit Mach4 screen to include requirements
-		#screens_dir = os.path.join(mach_dir, 'Screens')
-		#screen_name = ini_dict['Preferences']['Screen'].strip()
-		#screen_path = os.path.join(screens_dir, screen_name)
-		
-		#temp_dir = os.path.join(os.getcwd(), 'temp')
-		#if os.path.exists(temp_dir):
-		#	shutil.rmtree(temp_dir)
-		
-		#os.mkdir(temp_dir)
-
-		# extract screen files from .set file
-		#with zipfile.ZipFile(screen_path, 'r') as zip_ref:
-		#	zip_ref.extractall(temp_dir)
-
-		# programmatically write code in the Screen Load and PLC Scripts to connect the ModbusMPG module
-		#screen_load = '\n--ModbusMPG module\npackage.loaded.ModbusMPG = nil\nModbusMPG = require \"ModbusMPG\"\n'
-		#plc = 'ModbusMPG.RunModbusMPG()\n' 
-		#tree = et.parse(os.path.join(temp_dir, 'screen.xml'))
-		
-		#for node in tree.iter('Event'):    
-		#	if node.attrib['name'] == 'Screen Load Script':
-		#		if not 'ModbusMPG' in node.text:
-		#			node.text += screen_load
-		#	if node.attrib['name'] == 'PLC Script':
-		#		if not 'ModbusMPG' in node.text:
-		#			plc += node.text
-		#			node.text = plc
-
-		#tree.write(os.path.join(temp_dir, 'screen.xml'))
-		
-		# re-zip the screen .set file and move it into Mach4 Screens directory
-		#shutil.make_archive(screen_name, 'zip', temp_dir)
-		#os.rename(screen_name + '.zip', screen_name)
-		#shutil.move(screen_name, screen_path)
-		#shutil.rmtree(temp_dir)
-
-		# copy ModbusMPG.lua to modules directory
-		#modules_dir = os.path.join(mach_dir, 'Modules')
-		#shutil.copy('ModbusMPG.lua', modules_dir)
-
-		# copy MPGWiz to wizards directory
-		#wizards_dir = os.path.join(mach_dir, 'Wizards')
-		#shutil.copy('MPGWiz.mcs', wizards_dir)
 
 		# write the edited Machine.ini into the Mach4 Profiles directory
 		self.dict_to_machine_ini(ini_dict, ini_path)

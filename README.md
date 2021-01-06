@@ -30,10 +30,10 @@ https://github.com/adafruit/Adafruit_ADS1X15
 
 ## Mach4 Software Setup (installer)
 There are several configurations that can be made using the ArduinoModbusInstaller.exe program. <br>
-<t> a. Use just the inputs and outputs on the Arduino Mega (this is the default). <br>
-<t> b. Use inputs outputs and ADC. <br>
-<t> c. Use inputs outputs and DAC. <br>
-<t> d. Use inputs outputs ADC and DAC. <br>
+&ensp;a. Use just the inputs and outputs on the Arduino Mega (this is the default). <br>
+&ensp;b. Use inputs outputs and ADC. <br>
+&ensp;c. Use inputs outputs and DAC. <br>
+&ensp;d. Use inputs outputs ADC and DAC. <br>
 
 To change these configurations delete the default modbus_ini_settings file in the src/ini_settings folder and rename the one you want to use as 'modbus_ini_settings'. For example, to use the inputs, outputs, ADC and DAC, delete modbus_ini_settings and rename modbus_ini_settings_io_adc_dac to 'modbus_ini_settings'.
 

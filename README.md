@@ -19,7 +19,7 @@ https://github.com/adafruit/Adafruit_ADS1X15
 
 ## Firmware and Network Setup
 1. Copy the nested folders in the libraries folder to the Arduino sketch folder on your computer (usually in Documents/Arduino/libraries). 
-2. Change the IP address of the Arduino in the Mach4ModbusW5500.ino sketch to conform to your network.  
+2. Change the IP address of the Arduino in the Mach4ModbusW5500.ino sketch to conform to your network. For example, if your network subnet is 192.168.1.X then change the IP address to something like 192.168.1.85.  
 3. Upload the Mach4ModbusW5500.ino file to the Arduino Mega using the Arduino (or other) IDE.
 4. Connect the Arduino to power and the network.
 

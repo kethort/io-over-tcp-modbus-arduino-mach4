@@ -56,7 +56,7 @@ To change these configurations delete the default modbus_ini_settings file in th
 </p>
  
 ## Parts List
-1.  https://www.amazon.com/ARDUINO-MEGA-2560-REV3-A000067/dp/B0046AMGW0/ref=sr_1_4?dchild=1&keywords=arduino+mega&qid=1609909788&s=electronics&sr=1-4
+1.  [Arduino Mega]:(https://www.amazon.com/ARDUINO-MEGA-2560-REV3-A000067/dp/B0046AMGW0/ref=sr_1_4?dchild=1&keywords=arduino+mega&qid=1609909788&s=electronics&sr=1-4)
 2.  https://www.amazon.com/SunFounder-Ethernet-Shield-W5100-Arduino/dp/B00HG82V1A/ref=sr_1_1_sspa?dchild=1&keywords=w5100&qid=1609909809&s=electronics&sr=1-1-spons&psc=1&spLa=ZW5jcnlwdGVkUXVhbGlmaWVyPUEyM0FCNVY1VDRXOUI2JmVuY3J5cHRlZElkPUEwODQ1MzQ4M0FMMTlHRzdTWUw1MCZlbmNyeXB0ZWRBZElkPUEwNTI1MzE2MzJJR0pGTUxXVUJLRyZ3aWRnZXROYW1lPXNwX2F0ZiZhY3Rpb249Y2xpY2tSZWRpcmVjdCZkb05vdExvZ0NsaWNrPXRydWU=
 3.  https://www.amazon.com/HiLetgo-Ethernet-Network-Interface-WIZ820io/dp/B08KXM8TKJ/ref=sr_1_2?dchild=1&keywords=w5500&qid=1609909837&s=electronics&sr=1-2
 4.  https://www.amazon.com/Adafruit-MCP4725-Breakout-Board-Interface/dp/B00SK8MBXI

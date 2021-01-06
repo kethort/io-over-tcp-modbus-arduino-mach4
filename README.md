@@ -35,7 +35,7 @@ d. Use inputs outputs ADC and DAC.
 To change these configurations delete the default modbus_ini_settings file in the src/ini_settings folder and rename the one you want to use as 'modbus_ini_settings'. For example, to use the inputs, outputs, ADC and DAC, delete modbus_ini_settings and rename modbus_ini_settings_io_adc_dac to 'modbus_ini_settings'.
 
 <p align="center">
-  <img src="/img/modbus_settings.PNG" height="500" width="500"/>
+  <img src="/img/modbus_settings.PNG" height="500" width="700"/>
 </p>
 
 1. Launch the ArduinoModbusInstaller.exe from the dist folder of the repo.

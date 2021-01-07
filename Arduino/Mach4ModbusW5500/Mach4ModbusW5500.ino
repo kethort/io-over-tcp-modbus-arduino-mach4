@@ -31,7 +31,7 @@
 //-------------------------------------------------------------
 
 // Uncomment one or both of these if using the Adafruit ADC or DAC devices
-//#define USE_ADC
+#define USE_ADC
 //#define USE_DAC
 
 #ifdef USE_ADC || USE_DAC
@@ -56,7 +56,7 @@ Adafruit_MCP4725 dac;
 ModbusIP mb;
 
 byte mac[] = {0xDE, 0xAD, 0xBE, 0xEF, 0xFE, 0xED};  
-byte ip[] = {192, 168, 2, 95}; 
+byte ip[] = {192, 168, 0, 50}; 
 
 byte pos = 0;
 
@@ -246,17 +246,21 @@ void readADCwriteDAC() {
     case 8:
       switch(pos) {
         case 68:
+#ifdef USE_DAC
           dacVal = mb.Hreg(modbusRegs[pos]);
           mb.Hreg(modbusRegs[pos], dacVal);
           dac.setVoltage(dacVal, false);
+#endif
           break;
         case 64:
         case 65:
         case 66:
         case 67:
+#ifdef USE_ADC
           byte adcChannel = pos % 8;
           adc = ads.readADC_SingleEnded(adcChannel) + 75;
           mb.Ireg(modbusRegs[pos], adc);
+#endif
           break; 
       } 
   }

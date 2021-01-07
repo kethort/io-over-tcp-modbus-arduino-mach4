@@ -18,7 +18,7 @@ https://github.com/adafruit/Adafruit_BusIO <br>
 https://github.com/adafruit/Adafruit_ADS1X15
 
 ## Firmware and Network Setup
-1. Copy the nested folders in the libraries folder to the Arduino sketch folder on your computer (usually in Documents/Arduino/libraries). 
+1. Copy the nested folders in the <b>libraries</b> directory to the Arduino sketch folder on your computer (usually in Documents/Arduino/libraries). 
 2. Change the IP address of the Arduino in the Mach4ModbusW5500.ino sketch to conform to your network. For example, if your network subnet is 192.168.1.X then change the IP address to something like 192.168.1.85.  
 
 <p align="center">
@@ -41,7 +41,7 @@ To change these configurations delete the default modbus_ini_settings file in th
   <img src="/img/modbus_settings.PNG" height="400" width="700"/>
 </p>
 
-1. Launch the ArduinoModbusInstaller.exe from the dist folder of the repo.
+1. Launch the <b>ArduinoModbusInstaller.exe</b> from the dist folder of the repo.
 2. Select the Mach4 profile you want to update, enter the IP address of the Arduino and press install (ip address is from the Arduino sketch). 
 
 <p align="center">

@@ -305,7 +305,6 @@ class AppWindow(wx.Frame):
 
 		# update ini_dict with modbus device settings from file
 		modbus_settings = self.get_modbus_ini_settings()
-		print(modbus_settings)
 		modbus_ini_dict = self.machine_ini_to_dict(modbus_settings)
 		ini_dict.update(modbus_ini_dict)
 

@@ -63,7 +63,17 @@ class AppWindow(wx.Frame):
 		self.cbo_profile_selection = wx.ComboBox(self, wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.Size(180,-1), [], wx.CB_READONLY)
 		bSizer3.Add(self.cbo_profile_selection, 0, wx.ALL, 5)
 
-		bSizer3.Add((100, 0), 1, wx.EXPAND, 5)
+		bSizer3.Add((50, 0), 1, wx.EXPAND, 5)
+
+		self.adc_checkbox = wx.CheckBox(self, wx.ID_ANY, u"ADC", wx.DefaultPosition, wx.DefaultSize, 0)
+		bSizer3.Add(self.adc_checkbox, 0, wx.ALL, 5)
+
+		bSizer3.Add((25, 0), 1, wx.EXPAND, 5)
+
+		self.dac_checkbox = wx.CheckBox(self, wx.ID_ANY, u"DAC", wx.DefaultPosition, wx.DefaultSize, 0)
+		bSizer3.Add(self.dac_checkbox, 0, wx.ALL, 5)
+
+		bSizer3.Add((50, 0), 1, wx.EXPAND, 5)
 
 		fgSizer1.Add(bSizer3, 1, wx.EXPAND, 5)
 		
@@ -265,6 +275,13 @@ class AppWindow(wx.Frame):
 
 		ini_dict.update(temp)
 
+	def get_modbus_ini_settings(self):
+		modbus_settings = 'modbus_ini_settings'
+		if self.adc_checkbox.IsChecked():
+			modbus_settings += '_adc'
+		if self.dac_checkbox.IsChecked():
+			modbus_settings += '_dac'
+		return modbus_settings
 
 	def btn_install_on_click(self, event):
 		mach_dir = self.mach_dir_url.GetValue()
@@ -287,7 +304,9 @@ class AppWindow(wx.Frame):
 		self.create_modbus_device(ini_dict, 'Arduino')
 
 		# update ini_dict with modbus device settings from file
-		modbus_ini_dict = self.machine_ini_to_dict('modbus_ini_settings')
+		modbus_settings = self.get_modbus_ini_settings()
+		print(modbus_settings)
+		modbus_ini_dict = self.machine_ini_to_dict(modbus_settings)
 		ini_dict.update(modbus_ini_dict)
 
 		# validate IP address and add to ini_dict

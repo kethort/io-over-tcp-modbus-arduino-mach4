@@ -6,3 +6,7 @@ Traceback (most recent call last):
   File "ArduinoModbusInstaller.py", line 282, in btn_install_on_click
   File "ArduinoModbusInstaller.py", line 228, in enable_plugin_in_ini
 KeyError: 'Plugins'
+Traceback (most recent call last):
+  File "ArduinoModbusInstaller.py", line 290, in btn_install_on_click
+  File "ArduinoModbusInstaller.py", line 167, in machine_ini_to_dict
+FileNotFoundError: [Errno 2] No such file or directory: 'modbus_ini_settings'

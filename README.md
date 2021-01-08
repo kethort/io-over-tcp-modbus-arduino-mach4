@@ -38,7 +38,7 @@ There are several configurations that can be made using the ArduinoModbusInstall
 To change these configurations select the appropriate check box(es) in the installer.
 
 <p align="center">
-  <img src="/img/adc_dac_check.PNG" height="400" width="700"/>
+  <img src="/img/adc_dac_check.PNG" width="400"/>
 </p>
 
 1. Launch the <b>ArduinoModbusInstaller.exe</b> from the dist folder of the repo.

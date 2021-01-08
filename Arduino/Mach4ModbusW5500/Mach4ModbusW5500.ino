@@ -31,8 +31,10 @@
 //-------------------------------------------------------------
 
 // Uncomment one or both of these if using the Adafruit ADC or DAC devices
-#define USE_ADC
+//#define USE_ADC
 //#define USE_DAC
+
+#define ADC_DIV 266
 
 #ifdef USE_ADC || USE_DAC
 #include <Wire.h>
@@ -258,7 +260,10 @@ void readADCwriteDAC() {
         case 67:
 #ifdef USE_ADC
           byte adcChannel = pos % 8;
-          adc = ads.readADC_SingleEnded(adcChannel) + 75;
+          adc = ads.readADC_SingleEnded(adcChannel);
+          adc = adc/ADC_DIV;
+          if (!(adc >= 0 && adc <= 100))
+            adc = 0;
           mb.Ireg(modbusRegs[pos], adc);
 #endif
           break; 

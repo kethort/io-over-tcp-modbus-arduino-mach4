@@ -6,6 +6,13 @@ This sketch requires the use of a W5100 or W5500 ethernet adapter and optionally
   <img src="/img/sharp_defines.PNG" height="125" width="700"/>
 </p>
 
+### ADC & DAC
+The ADC & DAC inputs and outputs communicate over the i2C bus. Use the i2C scanner at this link: https://gist.github.com/xzenzza/62d35c316191d3a5bae1da68374d4790 to find the address of the devices you are using and change the variables in the sketch accordingly.
+
+<p align="center">
+  <img src="/img/i2c_address.PNG" width="300"/>
+</p>
+
 The program allows control of 32 inputs and 32 outputs using the Mach4 modbus plugin. 
 
 The sketch accesses the Arduino pins directly using port manipulation for faster signaling. The input pins are active low (NPN -GND) and the output pins are active high (PNP +5v). 
@@ -77,13 +84,6 @@ The IP address in the sketch and the Mach4 modbus plugin configuration must be s
 
 <p align="center">
   <img src="/img/Mach4ModbusIPConfig.PNG" width="750"/>
-</p>
-
-### ADC & DAC
-The ADC & DAC inputs and outputs communicate over the i2C bus. Use the i2C scanner at this link: https://gist.github.com/xzenzza/62d35c316191d3a5bae1da68374d4790 to find the address of the devices you are using and change the variables in the sketch accordingly.
-
-<p align="center">
-  <img src="/img/i2c_address.PNG" width="300"/>
 </p>
 
 ### Output Pins

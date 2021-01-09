@@ -8,6 +8,12 @@ The sketch accesses the Arduino pins directly using port manipulation for faster
 
 You can either use one of the included profiles in the Mach4 Profiles directory, or use the ArduinoModbusInstaller.exe from the dist folder of the repo to update an existing Mach4 profile.
 
+## Parts List (Amazon links)
+1.  [Arduino Mega](https://www.amazon.com/ARDUINO-MEGA-2560-REV3-A000067/dp/B0046AMGW0/ref=sr_1_4?dchild=1&keywords=arduino+mega&qid=1609909788&s=electronics&sr=1-4)
+2.  [W5100 Ethernet Shield](https://www.amazon.com/SunFounder-Ethernet-Shield-W5100-Arduino/dp/B00HG82V1A/ref=sr_1_1_sspa?dchild=1&keywords=w5100&qid=1609909809&s=electronics&sr=1-1-spons&psc=1&spLa=ZW5jcnlwdGVkUXVhbGlmaWVyPUEyM0FCNVY1VDRXOUI2JmVuY3J5cHRlZElkPUEwODQ1MzQ4M0FMMTlHRzdTWUw1MCZlbmNyeXB0ZWRBZElkPUEwNTI1MzE2MzJJR0pGTUxXVUJLRyZ3aWRnZXROYW1lPXNwX2F0ZiZhY3Rpb249Y2xpY2tSZWRpcmVjdCZkb05vdExvZ0NsaWNrPXRydWU=)
+or [W5500 Ethernet Shield](https://www.amazon.com/HiLetgo-Ethernet-Network-Interface-WIZ820io/dp/B08KXM8TKJ/ref=sr_1_2?dchild=1&keywords=w5500&qid=1609909837&s=electronics&sr=1-2)
+4.  [12-bit DAC(optional)](https://www.amazon.com/Adafruit-MCP4725-Breakout-Board-Interface/dp/B00SK8MBXI)
+5.  [ADS1115 ADC(optional)](https://www.amazon.com/HiLetgo-Converter-Programmable-Amplifier-Development/dp/B01DLHKMO2/ref=sr_1_1_sspa?crid=1IGPUNOC1A5R2&dchild=1&keywords=ads1115&qid=1609909759&s=electronics&sprefix=ads1%2Celectronics%2C210&sr=1-1-spons&psc=1&spLa=ZW5jcnlwdGVkUXVhbGlmaWVyPUExUUtHNVYzREtSSEdEJmVuY3J5cHRlZElkPUEwOTkwMzI0MUpTMzJTMjYyUTVWUiZlbmNyeXB0ZWRBZElkPUEwNDAyOTIzMTlLVEM3UjJER1RFWiZ3aWRnZXROYW1lPXNwX2F0ZiZhY3Rpb249Y2xpY2tSZWRpcmVjdCZkb05vdExvZ0NsaWNrPXRydWU=)
 
 ### ADC & DAC
 To use the ADC or DAC uncomment the #defines at the top of the sketch. 
@@ -65,13 +71,6 @@ To change these configurations select the appropriate check box(es) in the insta
   <img src="/img/modbus_diag.PNG" width="300"/>
 </p>
  
-## Parts List
-1.  [Arduino Mega](https://www.amazon.com/ARDUINO-MEGA-2560-REV3-A000067/dp/B0046AMGW0/ref=sr_1_4?dchild=1&keywords=arduino+mega&qid=1609909788&s=electronics&sr=1-4)
-2.  [W5100 Ethernet Shield](https://www.amazon.com/SunFounder-Ethernet-Shield-W5100-Arduino/dp/B00HG82V1A/ref=sr_1_1_sspa?dchild=1&keywords=w5100&qid=1609909809&s=electronics&sr=1-1-spons&psc=1&spLa=ZW5jcnlwdGVkUXVhbGlmaWVyPUEyM0FCNVY1VDRXOUI2JmVuY3J5cHRlZElkPUEwODQ1MzQ4M0FMMTlHRzdTWUw1MCZlbmNyeXB0ZWRBZElkPUEwNTI1MzE2MzJJR0pGTUxXVUJLRyZ3aWRnZXROYW1lPXNwX2F0ZiZhY3Rpb249Y2xpY2tSZWRpcmVjdCZkb05vdExvZ0NsaWNrPXRydWU=)
-3.  [W5500 Ethernet Shield](https://www.amazon.com/HiLetgo-Ethernet-Network-Interface-WIZ820io/dp/B08KXM8TKJ/ref=sr_1_2?dchild=1&keywords=w5500&qid=1609909837&s=electronics&sr=1-2)
-4.  [12-bit DAC](https://www.amazon.com/Adafruit-MCP4725-Breakout-Board-Interface/dp/B00SK8MBXI)
-5.  [ADS1115 ADC](https://www.amazon.com/HiLetgo-Converter-Programmable-Amplifier-Development/dp/B01DLHKMO2/ref=sr_1_1_sspa?crid=1IGPUNOC1A5R2&dchild=1&keywords=ads1115&qid=1609909759&s=electronics&sprefix=ads1%2Celectronics%2C210&sr=1-1-spons&psc=1&spLa=ZW5jcnlwdGVkUXVhbGlmaWVyPUExUUtHNVYzREtSSEdEJmVuY3J5cHRlZElkPUEwOTkwMzI0MUpTMzJTMjYyUTVWUiZlbmNyeXB0ZWRBZElkPUEwNDAyOTIzMTlLVEM3UjJER1RFWiZ3aWRnZXROYW1lPXNwX2F0ZiZhY3Rpb249Y2xpY2tSZWRpcmVjdCZkb05vdExvZ0NsaWNrPXRydWU=)
-
 ## W5100 Connection
 
 Pin 53 is used as the SS or CS pin so that pin 10 can be used as an output. If you are using the W5100 ethernet shield, then pin 10 should be bent or cut off and wire should be connected from pin 10 on the Ethernet shield to pin 53 of the Arduino Mega.

@@ -15,7 +15,7 @@ or [W5500 Ethernet Shield](https://www.amazon.com/HiLetgo-Ethernet-Network-Inter
 4.  [12-bit DAC (optional)](https://www.amazon.com/Adafruit-MCP4725-Breakout-Board-Interface/dp/B00SK8MBXI)
 5.  [ADS1115 ADC (optional)](https://www.amazon.com/HiLetgo-Converter-Programmable-Amplifier-Development/dp/B01DLHKMO2/ref=sr_1_1_sspa?crid=1IGPUNOC1A5R2&dchild=1&keywords=ads1115&qid=1609909759&s=electronics&sprefix=ads1%2Celectronics%2C210&sr=1-1-spons&psc=1&spLa=ZW5jcnlwdGVkUXVhbGlmaWVyPUExUUtHNVYzREtSSEdEJmVuY3J5cHRlZElkPUEwOTkwMzI0MUpTMzJTMjYyUTVWUiZlbmNyeXB0ZWRBZElkPUEwNDAyOTIzMTlLVEM3UjJER1RFWiZ3aWRnZXROYW1lPXNwX2F0ZiZhY3Rpb249Y2xpY2tSZWRpcmVjdCZkb05vdExvZ0NsaWNrPXRydWU=)
 
-### ADC & DAC
+## ADC & DAC
 To use the ADC or DAC uncomment the #defines at the top of the sketch. 
 
 <p align="center">

@@ -71,7 +71,7 @@ Pin 53 is used as the SS or CS pin so that pin 10 can be used as an output. If y
 </p>
 
 ## Mach4 Software Setup (profile)
-<i>This setup is not necessary of you used the exe installer; only if you are importing one of the provided Mach4 profiles in the repo</i>
+<i>***This setup is not necessary of you used the exe installer; only if you are importing one of the provided Mach4 profiles in the repo</i>
   
 The IP address in the sketch and the Mach4 modbus plugin configuration must be setup according to the network configuration of the connected device. The modbus plugin configuration can be accessed through the Mach4 file menu at: Configure>Plugins...>Modbus. 
 

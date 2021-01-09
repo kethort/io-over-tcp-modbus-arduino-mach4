@@ -88,6 +88,7 @@ The IP address in the sketch and the Mach4 modbus plugin configuration must be s
   <img src="/img/Mach4ModbusIPConfig.PNG" width="750"/>
 </p>
 
+## Pinout
 ### Output Pins
 {2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 
  14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 

@@ -1,10 +1,6 @@
 # Arduino Mega W5500 Mach4 Modbus via TCP
 
-This sketch requires the use of a W5100 or W5500 ethernet adapter and optionally supports either an Adafruit ADS1115 ADC and MCP4725 DAC device (or both). To use the ADC or DAC uncomment the #defines at the top of the sketch. 
-
-<p align="center">
-  <img src="/img/sharp_defines.PNG" height="125" width="700"/>
-</p>
+This sketch requires the use of a W5100 or W5500 ethernet adapter and optionally supports either an Adafruit ADS1115 ADC and MCP4725 DAC device (or both).
 
 The program allows control of 32 inputs and 32 outputs using the Mach4 modbus plugin. 
 
@@ -14,6 +10,12 @@ You can either use one of the included profiles in the Mach4 Profiles directory,
 
 
 ### ADC & DAC
+To use the ADC or DAC uncomment the #defines at the top of the sketch. 
+
+<p align="center">
+  <img src="/img/sharp_defines.PNG" height="125" width="700"/>
+</p>
+
 The ADC & DAC inputs and outputs communicate over the i2C bus. Use the i2C scanner at this link: https://gist.github.com/xzenzza/62d35c316191d3a5bae1da68374d4790 to find the address of the devices you are using and change the variables in the sketch accordingly.
 
 <p align="center">

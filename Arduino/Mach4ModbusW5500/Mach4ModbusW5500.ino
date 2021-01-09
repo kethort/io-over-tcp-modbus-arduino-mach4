@@ -66,7 +66,7 @@ byte pos = 0;
     address (byte in the modbusRegs array) does not get sent through. 
     That's why they are skipped in the register array and in the Mach4 modbus plugin configuration.
 
-    The bytes in the modbusRegs array does not have to be in any order, but the value of the bytes do have to be different
+    The bytes in the modbusRegs array do not have to be in any order, but the value of the bytes do have to be different
     in each location to avoid collisions on the other side.  
 */
 byte modbusRegs[] = {1,  2,  3,  4,  5,  6,  7,  9,   // 0 - 7    PORTF
